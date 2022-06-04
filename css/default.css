@@ -1,0 +1,101 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  font-size: 72%;
+}
+
+.semi-container {
+  width: 30rem;
+  margin-block-start: 2rem;
+}
+
+.foot {
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.def-padding {
+  margin-block-start: 1rem;
+}
+
+.card-success {
+  background-color: rgba(13, 75, 13, 0.87);
+  color: white;
+}
+.card-success:hover {
+  background-color: rgb(1, 85, 1);
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+}
+.profile-image {
+  color: white;
+  width: 3rem;
+
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  background-color: rgb(17, 126, 176);
+}
+
+.specific {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: -70px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.side {
+  position: relative;
+}
+
+.light {
+  color: #f8f9fa;
+}
+
+.main {
+  height: max-content;
+}
+
+.view-profile {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 100%;
+  font-size: 4rem;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+
+.table-container {
+  width: 25rem;
+}
+
+.table-container > table tr td {
+  padding-inline-start: 4rem;
+}
