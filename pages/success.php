@@ -7,6 +7,7 @@ $index = "../index.php";
 require_once("../includes/header.php");
 require_once("../db/db.php");
 require_once("../includes/dialog.php");
+
 if (isset($_POST['submit'])) {
     $fname = $_POST['firstName'];
     $lname = $_POST['lastName'];
@@ -17,11 +18,14 @@ if (isset($_POST['submit'])) {
 
     if (($fname && $lname && $mail && $contact && $birthDate && $specialty_id) != null) {
         $isSuccess = $crud->insert('attendee', ['firstName' => ucfirst($fname), 'lastName' => ucfirst($lname), 'emailAddress' => $mail, 'contact' => $contact, 'birthDate' => $birthDate, 'specialty_id' => $specialty_id]);
+
         if (!$isSuccess)
             echo card("Error", "Something went wrong", "card-danger");
     }
 }
+
 ?>
+
 <div class="row justify-content-center align-item-center">
     <div class="card semi-container col-2">
         <?php require_once("../includes/view_table.php");

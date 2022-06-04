@@ -12,9 +12,7 @@ try {
     $pdo = new PDO($dsn, $user, $pass);
 } catch (PDOException $th) {
     // echo card("Error", "Something went wrong", "bg-danger");
-    echo "<div style='display:none'>";
     throw new PDOException($th->getMessage());
-    echo "</div> ";
 }
 
 require_once("crud.php");

@@ -3,7 +3,7 @@
 class Crud
 {
     private $db;
-    function __construct($conn)
+    public function __construct($conn)
     {
         $this->db = $conn;
     }
@@ -11,7 +11,6 @@ class Crud
     public function insert($table, $data)
     {
         try {
-
             $columns = implode(',', array_keys($data));
             $values = ":" . implode(',:', array_keys($data));
             $sql = "INSERT INTO $table ($columns) VALUES ($values)";
@@ -29,7 +28,6 @@ class Crud
 
     public function readFromTable($table)
     {
-
         $sql = "SELECT * FROM $table";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
@@ -38,7 +36,6 @@ class Crud
 
     public function readSpecificValue($table, $id)
     {
-
         $sql = "SELECT * FROM $table WHERE {$table}_id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
@@ -48,7 +45,6 @@ class Crud
 
     public function getAttendees()
     {
-
         $sql = "SELECT * FROM attendee inner join specialty on attendee.specialty_id = specialty.specialty_id";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
@@ -57,7 +53,6 @@ class Crud
 
     public function getOneAttendee($id)
     {
-
         $sql = "SELECT * FROM attendee inner join specialty on attendee.specialty_id = specialty.specialty_id WHERE attendee_id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
@@ -76,4 +71,23 @@ class Crud
     }
 
 
+    public function updateRow($table, $id, $data)
+    {
+        try {
+            //code...
+            $columns_values = implode(',', array_map(function ($k) {
+                return $k . "= :" . $k;
+            }, array_keys($data)));
+            $sql = "UPDATE $table SET $columns_values WHERE {$table}_id = :id";
+            $stmt = $this->db->prepare($sql);
+            foreach ($data as $key => $value) {
+                $stmt->bindValue(":$key", $value);
+            }
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+        } catch (\PDOException $th) {
+            //throw $th;
+            echo $th->getMessage();
+        }
+    }
 }

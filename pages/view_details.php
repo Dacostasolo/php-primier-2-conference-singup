@@ -1,8 +1,8 @@
 <?php
 $css_style = "../css/default.css";
-$title = "success";
-$def_header = "Success page";
-$nav = "../pages/registered.php";
+$title = "personal-details";
+$def_header = "Your Details";
+$nav = "registered.php";
 $index = "../index.php";
 require_once("../includes/header.php");
 require_once("../db/db.php");
@@ -23,8 +23,8 @@ require_once("../includes/dialog.php")
                 ?>
             </div>
             <div class="mb-4">
-                <a class="btn btn-success px-5">Edit #</a>
-                <a class="btn btn-danger px-5" href="../index.php?delId=<?php echo $_GET['id'] ?>">Remove</a>
+                <a class="btn btn-success px-5" href="make-update.php?udtId=<?php echo $_GET['id'] ?>">Edit # </a>
+                <a class="btn btn-warning px-5" href="../index.php?delId=<?php echo $_GET['id'] ?>">Remove</a>
             </div>
         </div>
     </div>
